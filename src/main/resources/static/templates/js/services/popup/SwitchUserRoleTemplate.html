@@ -1,0 +1,48 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" data-ng-click="cancel()">×</button>
+    <h3 class="modal-title" data-ng-bind="title"></h3>
+</div>
+
+<div class="modal-body">
+    <div class="form-body">
+        <div class="table-scrollable">
+            <table class="table table-striped table-bordered table-hover">
+                <thead>
+                <tr class="heading">
+                    <th></th>
+                    <th>角色名</th>
+                    <th>角色区域</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="odd gradeX" data-ng-repeat="item in userInfo.authList">
+                    <td><input type="radio" id="radio{{$index}}" data-ng-model="vo.curRole" data-ng-value="item"></td>
+                    <td>
+                         <label for="radio{{$index}}" class="full" ng-if="item.roleName=='管理员'">管理员</label>
+                         <label for="radio{{$index}}" class="full" ng-if="item.roleName=='研发人员'">研发人员</label>
+                         <label for="radio{{$index}}" class="full" ng-if="item.roleName=='总部HR'">总部HR</label>
+                         <label for="radio{{$index}}" class="full" ng-if="item.roleName=='城市管理员'">城市管理员</label>
+                         <label for="radio{{$index}}" class="full" ng-if="item.roleName=='城市经理'">城市经理</label>
+                         <label for="radio{{$index}}" class="full" ng-if="item.roleName=='出纳人员'">出纳</label>
+                         <label for="radio{{$index}}" class="full" ng-if="item.roleName=='仓库管理员'">仓管</label>
+                         <label for="radio{{$index}}" class="full" ng-if="item.roleName=='仓配经理'">仓配经理</label>
+                         <label for="radio{{$index}}" class="full" ng-if="item.roleName=='仓配运营'">仓配运营</label>
+                         <label for="radio{{$index}}" class="full" ng-if="item.roleName=='物流队长'">物流队长</label>
+                    </td>
+                    <td>
+                        <label for="radio{{$index}}" class="full" data-ng-if="item.cityOrg.id"
+                               data-ng-bind-area="item.cityOrg">&nbsp;</label>
+                        <label for="radio{{$index}}" class="full" data-ng-if="!item.cityOrg.id">&nbsp;</label>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" data-ng-click="ok()" data-ng-disabled="isCurRoleInfo(vo.curRole)">确定
+    </button>
+    <button class="btn btn-warning" type="button" data-ng-click="cancel()">取消</button>
+</div>

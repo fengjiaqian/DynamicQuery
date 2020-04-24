@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Configuration status="info" name="MyApp"
+               monitorInterval="3">
+    <Appenders>
+        <!-- 控制台输出 -->
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d %-4r [%t] %id %-5p %c %x - %m%n"/>
+        </Console>
+        <!-- 本地日志文件输出 -->
+        <RollingFile name="RollingFile" fileName="/home/logs/${hostName}.log"
+                     filePattern="/home/logs/$${date:yyyy-MM}/${hostName}-%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout>
+                <Pattern>%d %p %c{1.} [%t] %id %m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <!-- size根据实际的日志量填写 -->
+                <SizeBasedTriggeringPolicy size="250 MB"/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <!-- 日志记录级别 -->
+        <Logger name="com.alibaba.dubbo.monitor.dubbo.DubboMonitor" level="info" additivity="false"/>
+        <Root level="info">
+            <AppenderRef ref="STDOUT"/>
+            <AppenderRef ref="RollingFile"/>
+        </Root>
+    </Loggers>
+</Configuration>

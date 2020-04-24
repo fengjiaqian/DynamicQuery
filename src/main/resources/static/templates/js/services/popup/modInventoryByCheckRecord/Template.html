@@ -1,0 +1,220 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" data-ng-click="cancel()">×</button>
+    <h3 class="modal-title">校正库存</h3>
+</div>
+
+<div class="modal-body">
+    <div class="form-body">
+    
+        <form class="form-horizontal" name="addForm" novalidate>
+            <div class="form-body">
+                <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="form-group">
+                                <label class="col-md-5 control-label">单据类型：<span class="required"> * </span></label>
+								<div class="col-md-7">
+									<select ng-model="vo.orderType" name="orderType"
+											class="form-control  ng-pristine ng-untouched ng-valid ng-scope" required>
+										<option value="">请选择</option>
+										<option value="0">订单</option>
+										<option value="1">合作商订单</option>
+										<option value="2">退货单</option>
+										<option value="3">采购入库单</option>
+										<option value="4">采购退货单</option>
+										<option value="5">销售出库单</option>
+										<option value="6">退货入库单</option>
+										<option value="7">库存盘点单</option>
+										<option value="8">破损出库单</option>
+										<option value="9">其他出库单</option>
+										<option value="10">物料调拨单</option>
+										<option value="11">兑奖单</option>
+										<option value="12">易经销配送单</option>
+										<option value="13">易经销出库单</option>
+										<option value="15">处理品转入</option>
+										<option value="16">处理品转出</option>
+										<option value="17">盘点单</option>
+										<option value="24">易酒批零团购订单</option>
+										<option value="30">临期产品订单</option>
+										<option value="31">大商转配送</option>
+										<option value="32">轻加盟订单</option>
+										<option value="33">经销商订单</option>
+										<option value="34">团购直营</option>
+										<option value="35">拼团订单</option>
+										<option value="50">第三方入库</option>
+										<option value="51">第三方出库</option>
+										<option value="52">同城调拨转入</option>
+										<option value="53">同城调拨转出</option>
+										<option value="98">矫正库存</option>
+										<option value="99">ERP手动处理</option>
+										<option value="100">OP手动处理</option>
+										<option value="101">第三方出库</option>
+										<option value="102">第三方入库</option>
+									</select>
+									<div class="error-messages ng-scope ng-active"
+				                                 data-ng-messages="addForm.orderType.$error"
+				                                 data-ng-if="addForm.orderType.$touched">
+				                                <div class="ng-scope" data-ng-message="required">单据类型为必填！</div>
+								    </div>
+							    </div>
+                            </div>
+                        </div>
+                </div>
+
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2">
+						<div class="form-group">
+							<label class="col-md-5 control-label">单号：</label>
+							<div class="col-md-7">
+								<input type="text" name="orderNo"  class="form-control" data-ng-model="vo.orderNo"/>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2">
+						<div class="form-group">
+							<label class="col-md-5 control-label">酒批事件类型：<span class="required"> * </span></label>
+							<div class="col-md-7">
+								<select ng-model="vo.jiupiEventType" name="jiupiEventType"
+										class="form-control  ng-pristine ng-untouched ng-valid ng-scope" required>
+									<option value="">请选择</option>
+									<option value="0">下单扣城市库存</option>
+									<option value="1">预售审核扣城市库存</option>
+									<option value="2">下单失败返城市库存</option>
+									<option value="3">订单取消返还城市库存</option>
+									<option value="4">订单审核不通过返还城市库</option>
+									<option value="5">仓库发货扣仓库库存</option>
+									<option value="6">部分配送返城市库存</option>
+									<option value="7">部分配送返仓库库存</option>
+									<option value="8">配送失败返城市库存</option>
+									<option value="9">配送失败返仓库库存</option>
+									<option value="10">退货单返城市库存</option>
+									<option value="11">退货单返仓库库存</option>
+									<option value="30">下单扣销售库存</option>
+									<option value="31">预售审核扣销售库存</option>
+									<option value="32">下单失败返销售库存</option>
+									<option value="33">订单取消返还销售库存</option>
+									<option value="34">订单审核不通过返还销售库存</option>
+									<option value="35">配送失败返销售库存</option>
+									<option value="36">退货单返销售库存</option>
+									<option value="37">部分配送返销售库存</option>
+									<option value="50">初始化活动库存</option>
+									<option value="51">扣除活动库存</option>
+									<option value="52">返还活动库存</option>
+									<option value="53">初始化预售库存</option>
+									<option value="54">扣除预售库存</option>
+									<option value="55">返还预售库存</option>
+									<option value="97">erp库存同步</option>
+									<option value="98">手动修改</option>
+									<option value="99">自动校正</option>
+									<option value="101">供应链调拨</option>
+									<option value="102">延迟配送订单返仓库库存</option>
+									<option value="103">延迟配送订单召回扣仓库库存</option>
+									<option value="104">自提订单出库</option>
+									<option value="105">仓管确认入库</option>
+									<option value="106">财务收款确认入库</option>
+								</select>
+								<div class="error-messages ng-scope ng-active"
+									 data-ng-messages="addForm.jiupiEventType.$error"
+									 data-ng-if="addForm.jiupiEventType.$touched">
+									<div class="ng-scope" data-ng-message="required">酒批事件类型为必填！</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2">
+						<div class="form-group">
+							<label class="col-md-5 control-label">erp事件类型：</label>
+							<div class="col-md-7">
+								<select ng-model="vo.erpEventType" name="erpEventType"
+										class="form-control  ng-pristine ng-untouched ng-valid ng-scope">
+									<option value="">请选择</option>
+									<option value="1">单据录入</option>
+									<option value="2">单据修改</option>
+									<option value="3">单据删除</option>
+									<option value="4">单据审核</option>
+									<option value="5">单据反审核</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2">
+						<div class="form-group">
+							<label class="col-md-5 control-label">操作人：</label>
+							<div class="col-md-7">
+								<input type="text" name="createUser"  class="form-control" data-ng-model="vo.createUser"/>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2">
+						<div class="form-group">
+							<label class="col-md-5 control-label">描述：</label>
+							<div class="col-md-7">
+								<input type="text" name="description"  class="form-control" data-ng-model="vo.description"/>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2">
+						<div class="form-group">
+							<label class="col-md-5 control-label">大单位数量：<span class="required"> * </span></label>
+							<div class="col-md-7">
+								<input type="number" name="packageCount"  class="form-control" data-ng-model="vo.packageCount" required data-ng-pattern ="/^(0|[1-9][0-9]*|-[1-9][0-9]*)$/"/>
+								<div class="error-messages ng-scope ng-active"
+									 data-ng-messages="addForm.packageCount.$error"
+									 data-ng-if="addForm.packageCount.$touched">
+									<div class="ng-scope" data-ng-message="required">大单位数量为必填！</div>
+								</div>
+								<div class="error-messages ng-scope ng-active"
+									 data-ng-messages="addForm.packageCount.$error"
+									 data-ng-if="addForm.packageCount.$touched">
+									<div class="ng-scope" data-ng-message="pattern">只能输入整数!</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2">
+						<div class="form-group">
+							<label class="col-md-5 control-label">小单位数量：<span class="required"> * </span></label>
+							<div class="col-md-7">
+								<input type="number" name="unitCount"  class="form-control" data-ng-model="vo.unitCount" required  data-ng-pattern ="/^(0|[1-9][0-9]*|-[1-9][0-9]*)$/"/>
+								<div class="error-messages ng-scope ng-active"
+									 data-ng-messages="addForm.unitCount.$error"
+									 data-ng-if="addForm.unitCount.$touched">
+									<div class="ng-scope" data-ng-message="required">小单位数量为必填！</div>
+								</div>
+								<div class="error-messages ng-scope ng-active"
+									 data-ng-messages="addForm.unitCount.$error"
+									 data-ng-if="addForm.unitCount.$touched">
+									<div class="ng-scope" data-ng-message="pattern">只能输入整数!</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+         </form>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" data-ng-click="ok()" data-ng-disabled="!addForm.$valid">确定
+    </button>
+    <button class="btn btn-warning" type="button" data-ng-click="cancel()">取消</button>
+</div>

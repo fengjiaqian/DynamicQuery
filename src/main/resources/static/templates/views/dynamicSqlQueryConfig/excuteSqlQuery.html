@@ -1,0 +1,44 @@
+<link href="../assets/pages/css/ng-grid.min.css" rel="stylesheet" type="text/css"/>
+<style>
+.gridStyle {
+    height:600px;
+}
+</style>
+<div data-page-top></div>
+<div data-page-content>
+    <div>
+    	<div data-page-search data-ng-hide="searchHide">
+        <div class="portlet-body">
+            <form id="seForm" class="form-horizontal" name="seForm">
+                <div class="row">
+                    <div class="col-md-12">
+                    	<div class="col-md-3" style="padding-left: 0" ng-repeat="item in searchInputs">
+	                        <div class="form-group">
+	                            <label class="col-md-5 control-label ng-binding" data-ng-bind="item.name"></label>
+	                            <div class="col-md-5">
+	                                <input type="text" ng-model="item.value" name="{{item.id}}" placeholder="请输入{{item.name}}"
+	                                       class="form-control ng-pristine ng-untouched ng-valid">
+	                            </div>
+	                        </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    	</div>
+    	<div class="table-toolbar">
+            <div class="btn-group">
+                <button class="btn blue " type="button" data-ng-click="exportExcel();">
+											<i class="icon-share-alt"></i> 导出
+				</button>
+				<a href="#/dynamicSqlQueryConfig" class="btn default" style="margin-left:10px">
+                 	<i class="fa fa-chevron-circle-left"></i> 返回
+                </a>
+            </div>
+        </div>
+        <div id="container" ng-controller="ExcuteSqlQueryController">
+        	<div class="gridStyle" ng-grid="gridOptions" />
+    	</div>
+				
+    </div>
+    </div>

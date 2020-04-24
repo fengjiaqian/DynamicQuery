@@ -1,0 +1,83 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal"
+            aria-hidden="true" ng-click="closeWindow()">×
+    </button>
+    <h3 class="modal-title"><span ng-bind="title"></span></h3>
+</div>
+<form class="form form-horizontal">
+    <div class="form-body">
+        <div class="row clearfix" id="datatable_ajax">
+            <div class="form-group col-md-6">
+                <label class="control-label col-md-6">店铺名称：</label>
+                <div class="col-md-6">
+                    <p class="form-control-static" ng-bind="user.companyName"></p>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="control-label col-md-6">店主姓名:</label>
+                <div class="col-md-6">
+                    <p class="form-control-static" ng-bind="user.name"></p>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="control-label col-md-6">手机号：</label>
+                <div class="col-md-6">
+                    <p class="form-control-static" ng-bind="user.mobileNo"></p>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="control-label col-md-6">性别：</label>
+                <div class="col-md-6">
+                    <p class="form-control-static" ng-bind="user.gender"></p>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="control-label col-md-6">生日：</label>
+                <div class="col-md-6">
+                    <p id="birthday" class="form-control-static" ng-bind="user.birthday | date :'yyyy年MM月dd日' "></p>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="control-label col-md-6">所在城市：</label>
+                <div class="col-md-6">
+                    <p class="form-control-static" ng-bind-area="user.city"></p>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="control-label col-md-6">所在区域：</label>
+                <div class="col-md-6">
+                    <p class="form-control-static" ng-bind-area="user.area"></p>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="control-label col-md-6">详细地址：</label>
+                <div class="col-md-6">
+                    <p class="form-control-static" ng-bind="user.detailAddress"></p>
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label class="control-label col-md-6">经纪人：</label>
+                <div class="col-md-6">
+                    <p class="form-control-static" ng-bind="user.salesUserName"></p>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="control-label col-md-6">锁定经纪人：</label>
+                <div class="col-md-6">
+                    <p class="form-control-static" ng-bind="user.lockBrokerUserName"></p>
+                </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label class="control-label col-md-6">状态：</label>
+                <div class="col-md-6" style="margin-top: 8px;">
+                    <p class="label label-sm label-info" ng-show="user.showState == '1' ">启用</p>
+                    <p class="label label-sm label-danger" ng-show="user.showState == '2' ">冻结</p>
+                    <p class="label label-sm label-default" ng-show="user.showState == '3' ">审核未通过</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- END FORM-->

@@ -1,0 +1,127 @@
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-hidden="true" data-ng-click="cancel()">×</button>
+	<h3 class="modal-title" data-ng-if='!isAdd'>变更库存</h3>
+	<h3 class="modal-title" data-ng-if='isAdd'>导入仓库</h3>
+</div>
+
+<div class="modal-body">
+	<div class="form-body">
+
+		<form class="form-horizontal" name="addForm" novalidate>
+			<div class="form-body">
+				<div class="row" data-ng-if='!isAdd'>
+					<div class="col-md-8 col-md-offset-2">
+						<div class="form-group">
+							<label class="col-md-5 control-label">大单位数量：<span class="required"> * </span></label>
+							<div class="col-md-7">
+								<input type="number" name="packageCount" class="form-control"
+									data-ng-model="vo.packageCount" required />
+								<!-- data-ng-pattern="/^(0|[1-9][0-9]*|-[1-9][0-9]*)$/"  -->
+								<div class="error-messages ng-scope ng-active"
+									data-ng-messages="addForm.packageCount.$error"
+									data-ng-if="addForm.packageCount.$touched">
+									<div class="ng-scope" data-ng-message="required">大单位数量为必填！</div>
+								</div>
+								<!-- <div class="error-messages ng-scope ng-active"
+									data-ng-messages="addForm.packageCount.$error"
+									data-ng-if="addForm.packageCount.$touched">
+									<div class="ng-scope" data-ng-message="pattern">只能输入整数!</div>
+								</div> -->
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row" data-ng-if='!isAdd'>
+					<div class="col-md-8 col-md-offset-2">
+						<div class="form-group">
+							<label class="col-md-5 control-label">小单位数量：<span class="required"> * </span></label>
+							<div class="col-md-7">
+								<input type="number" name="unitCount" class="form-control" data-ng-model="vo.unitCount"
+									required />
+								<!-- data-ng-pattern="/^(0|[1-9][0-9]*|-[1-9][0-9]*)$/"  -->
+								<div class="error-messages ng-scope ng-active"
+									data-ng-messages="addForm.unitCount.$error" data-ng-if="addForm.unitCount.$touched">
+									<div class="ng-scope" data-ng-message="required">小单位数量为必填！</div>
+								</div>
+								<!-- <div class="error-messages ng-scope ng-active"
+									data-ng-messages="addForm.unitCount.$error" data-ng-if="addForm.unitCount.$touched">
+									<div class="ng-scope" data-ng-message="pattern">只能输入整数!</div>
+								</div> -->
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row" data-ng-if='!isAdd'>
+					<div class="col-md-8 col-md-offset-2">
+						<div class="form-group">
+							<label class="col-md-5 control-label">产品渠道：<span class="required"> * </span></label>
+							<div class="col-md-7">
+								<select class="form-control" data-ng-model="vo.channel" data-ng-disabled="true">
+									<option value="">请选择</option>
+									<option value="0">零售产品</option>
+									<option value="1">大宗产品</option>
+									<option value="2">微酒产品</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row" data-ng-if='isAdd'>
+					<div class="col-md-8 col-md-offset-2">
+						<div class="form-group">
+							<label class="col-md-5 control-label">productSkuId：<span class="required"> * </span></label>
+							<div class="col-md-7">
+								<input type="text" name="productSkuId" class="form-control"
+									data-ng-model="vo.productSkuId" required data-ng-pattern="/^[0-9]*$/" />
+								<div class="error-messages ng-scope ng-active"
+									data-ng-messages="addForm.productSkuId.$error"
+									data-ng-if="addForm.productSkuId.$touched">
+									<div class="ng-scope" data-ng-message="required">productSkuId必填！</div>
+								</div>
+								<div class="error-messages ng-scope ng-active"
+									data-ng-messages="addForm.productSkuId.$error"
+									data-ng-if="addForm.productSkuId.$touched">
+									<div class="ng-scope" data-ng-message="pattern">只能输入整数!</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row" data-ng-if='isAdd'>
+					<div class="col-md-8 col-md-offset-2">
+						<div class="form-group">
+							<label class="col-md-5 control-label">仓库Id：<span class="required"> * </span></label>
+							<div class="col-md-7">
+								<input type="number" name="warehouseId" class="form-control"
+									data-ng-model="vo.warehouseId" required data-ng-minlength="4"
+									data-ng-maxlength="6" />
+								<div class="error-messages ng-scope ng-active"
+									data-ng-messages="addForm.warehouseId.$error"
+									data-ng-if="addForm.warehouseId.$touched">
+									<div class="ng-scope" data-ng-message="required">仓库Id必填！</div>
+									<div class="ng-scope" data-ng-message="minlength">长度必须大于等于4位！</div>
+									<div class="ng-scope" data-ng-message="maxlength">长度必须小于等于6位！</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row" data-ng-hide='userInfo.userRole=="Developer"'>
+					<div class="col-md-8 col-md-offset-2">
+						<div class="form-group">
+							<label class="col-md-5 control-label">是否更新交易系统库存：</label>
+							<div class="col-md-7" style='margin-top: 10px;'>
+								<input type="checkbox" name='hasUpdateOPInventory' ng-model="vo.hasUpdateOPInventory" />
+							</div>
+						</div>
+					</div>
+				</div>
+		</form>
+	</div>
+</div>
+
+<div class="modal-footer">
+	<button class="btn btn-primary" type="button" data-ng-click="ok()" data-ng-disabled="!addForm.$valid">确定
+	</button>
+	<button class="btn btn-warning" type="button" data-ng-click="cancel()">取消</button>
+</div>

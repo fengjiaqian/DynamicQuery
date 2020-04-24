@@ -1,0 +1,60 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" data-ng-click="cancel()">×</button>
+     <h3 class="modal-title" data-ng-if='!isAdd'>变更货位库存</h3>
+    <h3 class="modal-title" data-ng-if='isAdd'>导入货位仓库</h3>
+</div>
+
+<div class="modal-body">
+    <div class="form-body">
+    
+        <form class="form-horizontal" name="addForm" novalidate>
+            <div class="form-body">
+                <div class="row" data-ng-if='!isAdd'>
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="form-group">
+                                <label class="col-md-5 control-label">大单位数量：<span class="required"> * </span></label>
+								<div class="col-md-7">
+					                <input type="number" name="packageCount"  class="form-control" data-ng-model="vo.packageCount" required data-ng-pattern ="/^(0|[1-9][0-9]*|-[1-9][0-9]*)$/" />
+					                <div class="error-messages ng-scope ng-active"
+				                                 data-ng-messages="addForm.packageCount.$error"
+				                                 data-ng-if="addForm.packageCount.$touched">
+				                                <div class="ng-scope" data-ng-message="required">大单位数量为必填！</div>
+								    </div>
+								    <div class="error-messages ng-scope ng-active"
+				                                 data-ng-messages="addForm.packageCount.$error"
+				                                 data-ng-if="addForm.packageCount.$touched">
+				                                <div class="ng-scope" data-ng-message="pattern">只能输入整数!</div>
+								    </div>
+							    </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="row" data-ng-if='!isAdd'>
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="form-group">
+                                <label class="col-md-5 control-label">小单位数量：<span class="required"> * </span></label>
+								<div class="col-md-7">
+					                <input type="number" name="unitCount"  class="form-control" data-ng-model="vo.unitCount" required  data-ng-pattern ="/^(0|[1-9][0-9]*|-[1-9][0-9]*)$/"/>
+					                <div class="error-messages ng-scope ng-active"
+				                                 data-ng-messages="addForm.unitCount.$error"
+				                                 data-ng-if="addForm.unitCount.$touched">
+				                                <div class="ng-scope" data-ng-message="required">小单位数量为必填！</div>
+								    </div>
+								    <div class="error-messages ng-scope ng-active"
+				                                 data-ng-messages="addForm.unitCount.$error"
+				                                 data-ng-if="addForm.unitCount.$touched">
+				                                <div class="ng-scope" data-ng-message="pattern">只能输入整数!</div>
+								    </div>
+							    </div>
+                            </div>
+                        </div>
+               </div>
+         </form>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" data-ng-click="ok()" data-ng-disabled="!addForm.$valid">确定
+    </button>
+    <button class="btn btn-warning" type="button" data-ng-click="cancel()">取消</button>
+</div>

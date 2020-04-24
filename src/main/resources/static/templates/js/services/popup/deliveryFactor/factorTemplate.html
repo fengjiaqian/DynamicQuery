@@ -1,0 +1,62 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" data-ng-click="cancel()">×</button>
+    <h3 class="modal-title">编辑配送系数</h3>
+</div>
+
+<div class="modal-body">
+    <div class="form-body">
+    
+        <form class="form-horizontal" name="myForm" novalidate>
+            <div class="form-body">
+                <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="form-group">
+                                <label class="col-md-5 control-label">配送系数(计算件数)<span class='red'></span></label>   
+                                <div class="col-md-7">                                                                   
+                                    <input type="text" class="form-control" data-ng-model="vo.distributionPercent"
+                                       placeholder="格式为0到1之间的两位小数" name="distributionPercent" required data-ng-pattern='/^(0(\.(0[1-9]|[1-9]{1,2}|[1-9]0))|1)$/'> 
+                                    <div class="error-messages ng-scope ng-active"
+                                     data-ng-messages="myForm.distributionPercent.$error"
+                                     data-ng-if="myForm.distributionPercent.$touched">
+                                          <div class="ng-scope" data-ng-message="required">配送系数(计算件数)是必填项！</div>
+                                    </div>
+	                                <div class="error-messages ng-scope ng-active"
+	                                     data-ng-messages="myForm.distributionPercent.$error"
+	                                     data-ng-if="myForm.distributionPercent.$touched">
+	                                    <div class="ng-scope" data-ng-message="pattern">请输入0到1之间的两位小数！(不包含0)</div>
+	                                </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="form-group">
+                                <label class="col-md-5 control-label">配送系数(计算工资)<span class='red'></span></label>
+                                 <div class="col-md-7">
+                                      <input type="text" class="form-control" data-ng-model="vo.distributionPercentForAmount"
+                                       placeholder="请输入0到10之间的两位小数" name="distributionPercentForAmount" required data-ng-pattern='/^((0(\.(0[1-9]|[1-9]{1,2}|[1-9]0)))|([1-9](\.\d{1,2})?)|10)$/'>  
+                                      <div class="error-messages ng-scope ng-active"                                                     
+                                     data-ng-messages="myForm.distributionPercentForAmount.$error"                                         
+                                     data-ng-if="myForm.distributionPercentForAmount.$touched">                                          
+                                        <div class="ng-scope" data-ng-message="required">配送系数(计算工资)是必填项！</div>                       
+	                                 </div>
+	                                 <div class="error-messages ng-scope ng-active"
+	                                     data-ng-messages="myForm.distributionPercentForAmount.$error"
+	                                     data-ng-if="myForm.distributionPercentForAmount.$touched">
+	                                    <div class="ng-scope" data-ng-message='pattern'>请输入0到10之间的两位小数！(不包含0)</div>
+	                                 </div>
+                                 </div>
+                            </div>
+                        </div>
+               </div>
+            </div>
+         </form>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" data-ng-click="ok()" data-ng-disabled="!myForm.$valid">确定
+    </button>
+    <button class="btn btn-warning" type="button" data-ng-click="cancel()">取消</button>
+</div>

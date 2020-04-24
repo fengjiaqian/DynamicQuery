@@ -1,0 +1,35 @@
+<div>
+
+    <label class="col-md-{{labCol}} control-label"><span data-ng-bind="labelName"></span>： <span class ="required"  ng-if="showRequired"> * </span></label>
+    
+    <div class="col-md-9">
+        <div class="col-md-{{selCol}}"  >
+        <select ng-change="cityVo.city=null;cityVo.county=null;cityVo.street=null;initCity();changeProv(cityVo);" ng-model="cityVo.province" class="form-control" 
+        	ng-options="item as item.name for item in provinceList track by item.name"  ng-disabled="isDisabled">
+        	<option value="">请选择</option>
+        </select>
+	    </div>
+	    <div class="col-md-{{selCol}}" >
+	        <select ng-change="cityVo.county=null;cityVo.street=null;initCounty();changeCity(cityVo);"  ng-model="cityVo.city" class="form-control"
+	        	ng-options="item as item.name for item in cityList track by item.name"  ng-disabled="isDisabled">
+	        	<option value="">请选择</option>
+	        </select>
+	        <div  class="error-messages ng-scope ng-active  col-md-offset-4  col-md-12"  ng-if="cityVo.province && !cityVo.city && showRequired"> 市未选择</div>
+	    </div>
+	    <div class="col-md-{{selCol}}"  ng-if="showLevel !='2'">
+	        <select ng-change="cityVo.street=null;initStreet();changeCounty(cityVo)" ng-model="cityVo.county" class="form-control"
+	        		ng-options="item as item.name for item in countyList track by item.name" >
+	        	<option value="">请选择</option>
+	        </select>
+	        <div  class="error-messages ng-scope ng-active  col-md-offset-4  col-md-12"  ng-if="cityVo.city && !cityVo.county && showRequired"> 县未选择</div>
+	    </div>
+	<!--     <div class="col-md-{{selCol}}"  ng-if="showLevel !='2'">
+	        <select ng-model="cityVo.street" class="form-control dist"  ng-change="changeStreet(cityVo);"  
+	        	ng-options="item as item.name for item in streetList track by item.name">
+	        	<option value="">请选择</option>
+	        </select>
+	        <div  class="error-messages ng-scope ng-active  col-md-offset-4  col-md-12"  ng-if="cityVo.county && !cityVo.street && showRequired"> 街道未选择</div>
+	    </div> -->
+    </div>
+    
+</div>

@@ -1,0 +1,61 @@
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" data-ng-click="cancel()">×</button>
+    <h3 class="modal-title">同步配置</h3>
+</div>
+
+<div class="modal-body">
+    <div class="form-body">
+        <form class="form-horizontal" name="myForm" novalidate>
+            <input type="hidden" ng-model="vo.id" name="id">
+
+            <div class="row">
+                <div class="col-md-9 col-md-offset-1">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">仓库id:</label>
+                        <div class="col-md-8">
+                            <div class="col-md-8">
+                                <select class="form-control ng-pristine ng-untouched ng-valid"
+                                        data-placeholder="请选择"
+                                        ng-options="item.id as item.name for item in selectList"
+                                        ng-model="vo.storehouseId">
+                                    <option value="">请选择</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-9 col-md-offset-1">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">同步选项:</label>
+                            <div class="col-md-8 control-label" style="text-align: left;padding-left: 30px">
+                                <input type="checkbox" class="ng-valid ng-dirty ng-valid-parse ng-touched"  ng-model="vo.synApply"/> 申请单
+                                <input type="checkbox"  style="margin-left: 20px" class="ng-valid ng-dirty ng-valid-parse ng-touched"  ng-model="vo.synInStock"/> 入库单
+                            </div>
+                        </div>
+                </div>
+            </div>
+
+            </div>
+
+    </div>
+</div>
+
+</form>
+</div>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-primary" type="button" data-avoid-duplicate-submit data-ng-click="ok()"
+           >确定
+    </button>
+    <button class="btn btn-warning" type="button" data-ng-click="cancel()">取消</button>
+</div>
+
+
+
+

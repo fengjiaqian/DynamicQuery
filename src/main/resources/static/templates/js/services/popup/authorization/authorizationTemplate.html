@@ -1,0 +1,64 @@
+<div class="modal-header ng-scope">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancel()">×</button>
+    <h4 class="modal-title">人员授权</h4>
+</div>
+<div class="modal-body ng-scope">
+    <form name="Form" class="form-horizontal ng-invalid ng-invalid-required ng-dirty ng-valid-parse"
+        novalidate="novalidate">
+        <div class="row">
+            <div class="form-group">
+                <label class="col-md-3  control-label">角色： <span class="required">* </span>
+                </label>
+                <div class="col-md-7">
+                    <select class="form-control prov ng-dirty ng-valid-parse ng-valid ng-valid-required ng-touched"
+                        placeholder="请选择" ng-options="item.value as item.text for item in queryRefList"
+                        ng-model="vo.role" required="" ng-change="authorizedRole()">
+                        <option value="" selected="selected" class="">请选择</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="form-group" ng-if="vo.isOrderPickType">
+                <label class="col-md-3 control-label">拣货员类型：</label>
+                <div class="col-md-7">
+                    <select class="form-control ng-pristine ng-untouched ng-valid" data-placeholder="请选择"
+                        ng-model="vo.pickingAttr">
+                        <option value="">请选择</option>
+                        <option value="1">大件拣货</option>
+                        <option value="2">小件拣货</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group ng-scope" ng-if="vo.isShowRegion">
+                <label class="col-md-3  control-label">城市： <span class="required">* </span>
+                </label>
+                <div class="col-md-7">
+                    <ejp-jiupi-city-select jiupi-city-vo="cityVo" hide-please-select="false" change-jiupi-province=""
+                        change-jiupi-city='' is-disabled="isDisabled"></ejp-jiupi-city-select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group" ng-if="vo.isShowStore">
+                <label class="col-md-3 control-label">仓库：</label>
+                <div class="col-md-7">
+                    <select class="form-control ng-pristine ng-untouched ng-valid" data-placeholder="请选择"
+                        ng-options="item.id as item.name for item in storeList" ng-model="vo.org_Id">
+                        <option value="">请选择</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer ng-scope">
+    <button class="btn btn-primary" type="button" ng-click="confirm()" ng-disabled="Form.$invalid" ejp-no-more-submit=""
+        disabled="disabled">确定
+    </button>
+    <button class="btn default" type="button" ng-click="cancel()">取消</button>
+</div>

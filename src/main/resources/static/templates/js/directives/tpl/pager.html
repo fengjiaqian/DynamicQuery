@@ -1,0 +1,9 @@
+<div>
+    <pagination boundary-links="true" items-per-page="pages.itemsPerPage"
+                total-items="pages.totalResult" data-ng-model="pages.index"
+                class="pagination-sm pull-right" previous-text="&lsaquo;"
+                next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+                data-ng-change="onPageChange()"></pagination>
+    <h5>每页 {{pages.itemsPerPage}}条 | 共 {{pages.totalResult}} 条记录 | 当前第
+        {{pages.index}} 页 | 共 {{pages.totalPage}} 页</h5>
+</div>
